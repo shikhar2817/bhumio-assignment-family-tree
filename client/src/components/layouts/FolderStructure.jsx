@@ -9,6 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { Search } from "./Search";
 import { TreePreviewModal } from '../TreePreviewModal';
 import { Portal } from '../Portal';
+import { DeleteAlertModel } from '../DeleteAlertModel'
 
 export const FolderStructure = () => {
 
@@ -47,7 +48,11 @@ export const FolderStructure = () => {
         handleOpenPrint();
     };
 
-    // delete member
+    // delete model
+    const [openDelete, setOpenDelete] = useState(false)
+    const handleOpenDelete = () => setOpenDelete(true)
+    const handleCloseDelete = () => setOpenDelete(false)
+
 
     return (
         <div
@@ -87,7 +92,7 @@ export const FolderStructure = () => {
                 }
             >
                 <MenuItem onClick={() => { handleOpenModel(); handleClose(); }}>Add Family Member</MenuItem>
-                <MenuItem onClick={() => { handleOpenModel(); handleClose(); }}>Delete Family Member</MenuItem>
+                <MenuItem onClick={() => { handleOpenDelete(); handleClose(); }}>Delete Family Member</MenuItem>
                 <MenuItem onClick={() => { printToPdf(); handleClose(); }}>Print Family Member</MenuItem>
             </Menu>
             <Modal
@@ -110,6 +115,14 @@ export const FolderStructure = () => {
                     </div>
                 </Modal>
             </Portal>
+            <Modal
+                open={openDelete}
+                onClose={handleCloseDelete}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <DeleteAlertModel handleClose={handleCloseDelete} />
+            </Modal>
         </div>
     );
 };
