@@ -12,8 +12,7 @@ import { useRemoveFamily } from '../utils';
 export const DeleteAlertModel = ({ handleClose = () => { } }) => {
 
     const [node] = useSelectedNodeState();
-    const { removeFamily } = useRemoveFamily({ id: node["id"] });
-    // console.log(node);
+    const { removeFamily } = useRemoveFamily();
 
     return (
         <div>

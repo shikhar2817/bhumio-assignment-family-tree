@@ -93,23 +93,14 @@ export const useAddFamily = ({
     return { familyInfo, setFamilyInfoState, addFamily, onPicUpload };
 };
 
-export const useRemoveFamily = ({ id }) => {
-    const [familyInfo, setFamilyInfo] = useState(initialFamilyInfoState);
-
-    const [selectedNode] = useSelectedNodeState();
+export const useRemoveFamily = () => {
     const [treeState, setTreeDataState] = useTreeState();
 
     const dfsRemove = (id, node) => {
-        console.log("Node: ", node["id"], node["Name"]);
-        // console.log("Children: ", node["children"]);
         if (node["id"] === id) return null;
 
         let newChildren = {};
         let childrenArr = Object(node["children"]);
-
-        // for (let i of Object.keys(childrenArr)) {
-        //     console.log("Child: ", childrenArr[i]);
-        // }
 
         for (let i of Object.keys(childrenArr)) {
             let data = dfsRemove(id, childrenArr[i]);
@@ -120,7 +111,6 @@ export const useRemoveFamily = ({ id }) => {
     };
 
     const removeFamily = (id) => {
-        console.log("Id to be deleted: ", id);
         let data = dfsRemove(id, treeState);
         setTreeDataState(data);
     };
