@@ -3,7 +3,6 @@ import React from 'react'
 import { useState } from 'react';
 import { FamilyDetailsForm } from './FamilyDetailsForm';
 
-
 export const AddFamilyBtn = () => {
 
   const [open, setOpen] = useState(false);

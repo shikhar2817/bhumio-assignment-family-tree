@@ -33,6 +33,10 @@ export const FolderStructure = () => {
         setContextMenu(null);
     };
 
+    const [openModel, setOpenModel] = useState(false);
+
+    const handleOpenModel = () => setOpenModel(true);
+    const handleCloseModel = () => setOpenModel(false);
 
     return (
         <div
@@ -42,7 +46,6 @@ export const FolderStructure = () => {
                 width: '100%',
                 flexGrow: 1,
                 overflowY: 'auto',
-                // cursor: "pointer"
             }}
         >
             <LayoutHeader header={'Family Tree'} />
@@ -72,10 +75,18 @@ export const FolderStructure = () => {
                         : undefined
                 }
             >
-                <MenuItem onClick={handleClose}>Add Family Member</MenuItem>
+                <MenuItem onClick={() => { handleOpenModel(); handleClose(); }}>Add Family Member</MenuItem>
                 <MenuItem onClick={handleClose}>Delete Family Member</MenuItem>
                 <MenuItem onClick={handleClose}>Print Family Member</MenuItem>
             </Menu>
+            <Modal
+                open={openModel}
+                onClose={handleCloseModel}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <FamilyDetailsForm handleClose={handleCloseModel} />
+            </Modal>
         </div>
     );
 };
