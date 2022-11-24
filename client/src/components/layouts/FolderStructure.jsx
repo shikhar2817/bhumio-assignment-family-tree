@@ -15,32 +15,32 @@ export const FolderStructure = () => {
 
     const [treeState] = useTreeState();
 
-    const [contextMenu, setContextMenu] = useState(null);
+    // const [contextMenu, setContextMenu] = useState(null);
 
-    const handleContextMenu = (event) => {
-        event.preventDefault();
-        setContextMenu(
-            contextMenu === null
-                ? {
-                    mouseX: event.clientX + 2,
-                    mouseY: event.clientY - 6,
-                }
-                : null,
-        );
-    };
+    // const handleContextMenu = (event) => {
+    //     event.preventDefault();
+    //     setContextMenu(
+    //         contextMenu === null
+    //             ? {
+    //                 mouseX: event.clientX + 2,
+    //                 mouseY: event.clientY - 6,
+    //             }
+    //             : null,
+    //     );
+    // };
 
-    const handleClose = () => {
-        setContextMenu(null);
-    };
+    // const handleClose = () => {
+    //     setContextMenu(null);
+    // };
 
-    const [openModel, setOpenModel] = useState(false);
+    // const [openModel, setOpenModel] = useState(false);
 
-    const handleOpenModel = () => setOpenModel(true);
-    const handleCloseModel = () => setOpenModel(false);
+    // const handleOpenModel = () => setOpenModel(true);
+    // const handleCloseModel = () => setOpenModel(false);
 
     return (
         <div
-            onContextMenu={handleContextMenu}
+            // onContextMenu={handleContextMenu}
             style={{
                 borderBottom: '2px solid black',
                 width: '100%',
@@ -49,7 +49,7 @@ export const FolderStructure = () => {
             }}
         >
             <LayoutHeader header={'Family Tree'} />
-            <Search />
+            {/* <Search /> */}
             {Object.keys(treeState).length > 0 && (
 
                 <ul>
@@ -65,7 +65,7 @@ export const FolderStructure = () => {
                 </>
             )}
 
-            <Menu
+            {/* <Menu
                 open={contextMenu !== null}
                 onClose={handleClose}
                 anchorReference="anchorPosition"
@@ -78,15 +78,15 @@ export const FolderStructure = () => {
                 <MenuItem onClick={() => { handleOpenModel(); handleClose(); }}>Add Family Member</MenuItem>
                 <MenuItem onClick={handleClose}>Delete Family Member</MenuItem>
                 <MenuItem onClick={handleClose}>Print Family Member</MenuItem>
-            </Menu>
-            <Modal
+            </Menu> */}
+            {/* <Modal
                 open={openModel}
                 onClose={handleCloseModel}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
                 <FamilyDetailsForm handleClose={handleCloseModel} />
-            </Modal>
+            </Modal> */}
         </div>
     );
 };
