@@ -1,10 +1,13 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 
 const TreeStateCTX = createContext(null)
 
-export const TreeStateContext = ({children}) => {
+export const TreeStateContext = ({ children }) => {
 
     const treeState = useState({})
+    useEffect(() => {
+        console.log(JSON.stringify(treeState).length);
+    }, [treeState]);
 
     return (
         <TreeStateCTX.Provider value={treeState} >

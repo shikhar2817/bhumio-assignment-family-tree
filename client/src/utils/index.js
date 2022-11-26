@@ -112,7 +112,7 @@ export const useRemoveFamily = () => {
 
     const removeFamily = (id) => {
         let data = dfsRemove(id, treeState);
-        setTreeDataState(data);
+        setTreeDataState(data ? data : {});
     };
     return { removeFamily };
 };
